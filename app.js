@@ -6,24 +6,31 @@ var main =function () {
 		var b = parseNumber('#number_b');
 		var sum = add(a,b);
 		printScore(sum);
+		printHistory(a,b,sum, '+');
 	});
 	$('#sub').click(function(){
 		var a = parseNumber('#number_a');
 		var b = parseNumber('#number_b');
 		var sub = ode(a,b);
 		printScore(sub);
+		printHistory(a,b,sub,'-');
 	})
 	$('#mul').click(function(){
 		var a = parseNumber('#number_a');
 		var b = parseNumber('#number_b');
 		var mul = mno(a,b);
 		printScore(mul);
+		printHistory(a,b,mul,'*');
 	})
 	$('#div').click(function(){
 		var a = parseNumber('#number_a');
 		var b = parseNumber('#number_b');
 		var div = dzi(a,b);
 		printScore(div);
+		printHistory(a,b,div,'/');
+	})
+	$('#clearhistory').click(function (){
+		clearHistory();
 	})
 }
 function checkCommas(temp) {
@@ -55,6 +62,9 @@ function dzi(a,b) {
 function printScore(score) {
 	$('#score_indicator').text(score);
 }
+function printHistory(a,b,score,typeofaction) {
+	$('#history').append('<p>' + a + ' ' + typeofaction + ' ' + ' ' + b + ' ' + '=' + ' ' + score + '</p>');
+}
 
 function parseNumber(id) {
 	var number = $(id).val();
@@ -62,4 +72,10 @@ function parseNumber(id) {
 	number = parseFloat(number);
 	return number;
 }
+function clearHistory() {
+	$('#history').empty();
+}
+
+
+
 $(document).ready(main);
