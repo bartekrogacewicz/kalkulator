@@ -32,6 +32,13 @@ var main =function () {
 	$('#clearhistory').click(function (){
 		clearHistory();
 	})
+	$('#pwr').click(function (){
+		var a = parseNumber('#number_a');
+		var b = parseNumber('#number_b');
+		var pow = pwr(a,b);
+		printScore(pow);
+		printHistory(a,b,pow,'power');
+	})
 }
 function checkCommas(temp) {
 	if(temp.indexOf(',') > -1) {
@@ -58,6 +65,14 @@ function dzi(a,b) {
 	}
 	var c = a / b;
 	return c;
+}
+function pwr(a,b) {
+	var z = a;
+	for (var i=1; i < b; i++) {
+		z = z * a;
+
+	}
+	return z;
 }
 function printScore(score) {
 	$('#score_indicator').text(score);
